@@ -3,12 +3,7 @@ A python program to guide you through praying the Rosary.
 """
 import datetime
 import time
-import hailmary as hm
-from apostlescreed import ac
-from lordsprayer import lp
-from glorybe import gb
-from ohmyjesus import omj
-from hailholyqueen import hhq
+import prayers
 
 hmmode=0 #default setting. Abbreviated Hail Mary repetition format.
 
@@ -95,12 +90,12 @@ while True:
         print("In the name of the Father, the Son, and the Holy Spirit. Amen.")
         input()
         print("~Begin at the Crucifix~")
-        ac()
+        prayers.ac()
         print("~First bead past the Crucifix~")
-        lp()
-        hm.triplet(hmmode)
+        prayers.lp()
+        prayers.hailmary_triplet(hmmode)
         print("~Pray Glory Be to the Father~")
-        gb()
+        prayers.gb()
 
         print("~It is time to contemplate the " + mysteries[mystery][0] + "~")
         print("~Announce the First Mystery at the bead after the triplet.~")
@@ -110,23 +105,23 @@ while True:
         for i in range(5):
 
             if i==0:
-                lp()
-                hm.decade(hmmode, i)
-                gb()
-                omj()
+                prayers.lp()
+                prayers.hailmary_decade(hmmode, i)
+                prayers.gb()
+                prayers.omj()
 
             else:
                 print("~After completing the " + ordinal[i-1] + " decade, move to the next bead.")
                 print("~Announce the " + Ordinal[i] + " Mystery and then say the Lords Prayer~")
                 print("The " + Ordinal[i] + " Mystery: " + mysteries[mystery][i+1])
-                lp()
+                prayers.lp()
 
-                hm.decade(hmmode, i)
-                gb()
-                omj()
+                prayers.hailmary_decade(hmmode, i)
+                prayers.gb()
+                prayers.omj()
 
         print("~Conclude with Rosary by praying Salve Regina.~")
-        hhq()
+        prayers.hhq()
         break
 
     else:
